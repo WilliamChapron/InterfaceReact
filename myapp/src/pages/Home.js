@@ -3,14 +3,13 @@ import { getAll } from '../api/home';
 import ColorSchemesExample from '../components/Navbar';
 import { InsertPokemon } from '../api/post';
 import { GetPokedex } from '../api/pokedex';
-import { useForm } from "react-hook-form";
+import Form from '../components/Form';
+
 
 export default function Home(){
     
     const [ pokemons, setPokemons ] = useState([]);
     const [ pokedexs, setPokedex ] = useState([]);
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
     
     useEffect(() => {
         const pokemonsFetched = getAll();
@@ -39,10 +38,13 @@ export default function Home(){
               pokemon.type.map((type,keyType) => <h3>{type.name}</h3>)
             }
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <input {...register("idvalue")} /> <br></br> <br></br>
-              <input type="submit" /> 
-            </form>
+
+
+            
+
+
+            <Form pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {InsertPokemon}/>
+            
 
             
             {/* {

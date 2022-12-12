@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GetPokedex } from '../api/pokedex';
 import ColorSchemesExample from '../components/Navbar';
+import Form from '../components/Form';
+import { DeletePokemon } from "../api/delete";
 
 export default function Home(){
     
@@ -26,6 +28,9 @@ export default function Home(){
             {
                 pokedex.type.map((type,keyType) => <h3>{type.name}</h3>)
             }
+
+          <Form pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {DeletePokemon}/>
+
           </div>
         })
       }

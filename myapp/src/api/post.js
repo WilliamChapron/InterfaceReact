@@ -1,12 +1,12 @@
-export const InsertPokemon = async (idvalue) => {
-    console.log(idvalue)
+export const InsertPokemon = async (data) => {
     fetch('http://localhost:4444/pokedex/insert', {
             method: 'POST', 
             headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({choice:{idvalue}})
+            body: JSON.stringify({choice:data.id})
     })
-    .then(res => res.json())
-    .then(res => {console.log(res)})
+    .then(response => response.json())
+    .catch(error => (console.log(error)));
+
 
     
 }

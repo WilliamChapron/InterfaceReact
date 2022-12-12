@@ -1,16 +1,10 @@
-export const UpdatePokemon = (event) => {
+export const UpdatePokemon = (data) => {
     event.PreventDefault();
-    const bodySend = {
-        nameEdit:"shit",
-        name:"dsdfs",
-        type1:"azeaf",
-        type2:"azdadz"
-    }
 
     fetch('http://localhost:4444/pokemon/update',{
         method: 'POST', 
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(bodySend)
+        body: JSON.stringify()
     })
     .then(res => res.json())
     .then(res => {console.log(res)})

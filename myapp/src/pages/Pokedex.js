@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { GetPokedex } from '../api/pokedex';
+import { GetPokedex } from '../api/GetPokedex';
 import ColorSchemesExample from '../components/Navbar';
 import Form from '../components/Form';
-import { DeletePokemon } from "../api/delete";
+import { RemovePokedex } from "../api/RemovePokedex";
 
 export default function Home(){
     
     const [ pokedexs, setPokedex ] = useState([]);
+
+    const [ count, setCount ] = useState(0);
+    const handleRefresh = () => setCount(count+1);
     
     useEffect(() => {
+      console.log("submitttt");
       const pokedexFetched = GetPokedex();
       pokedexFetched
         .then(resultp => setPokedex(resultp))
         .catch(error=>console.error("Erreur avec notre API :",error.message));
-    },[]);
+    },[count]);
 
    
 
@@ -29,7 +33,7 @@ export default function Home(){
                 pokedex.type.map((type,keyType) => <h3>{type.name}</h3>)
             }
 
-          <Form pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {DeletePokemon}/>
+          <Form pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/>
 
           </div>
         })

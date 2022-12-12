@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router'
 
 
 export default function Form(props){
@@ -7,12 +6,18 @@ export default function Form(props){
 
     
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => { props.functionName(data);  history => history.go(0)};
+
+    const onSubmit = data => { 
+        props.functionName(data);
+        props.refreshPage();
+    };
 
 
     return <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" {...register("id" )} value={props.pokemonId} /> <br></br> <br></br>
-        <input type="submit" value={props.valueSubmit}/> 
+        <input type="hidden" {...register("id", {required: true})} value={props.pokemonId}/> <br></br> <br></br>
+        <input type="submit" value={props.valueSubmit} /> 
     </form>
+
+    
 
 }

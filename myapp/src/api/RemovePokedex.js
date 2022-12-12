@@ -1,6 +1,4 @@
-import { Redirect } from "react-router-dom";
-
-export const DeletePokemon = async (data) => {
+export const RemovePokedex = async (data) => {
     fetch('http://localhost:4444/pokedex/delete', {
             method: 'DELETE', 
             headers: {'Content-Type':'application/json'},

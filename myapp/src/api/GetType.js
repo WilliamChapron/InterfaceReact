@@ -1,6 +1,6 @@
-export const getAll = async () => {
+export const GetType = async () => {
     const response = await fetch(
-        'http://localhost:4444/pokemon/read', {
+        'http://localhost:4444/type/read', {
             method: 'GET', 
             headers: {
                 'Accept': 'application/json', 
@@ -8,6 +8,6 @@ export const getAll = async () => {
             }
         }
     )
-    const pokemons = await response.json()
-    return pokemons
+    const types = await response.json()
+    return types
 }

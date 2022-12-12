@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getAll } from '../api/home';
+import { GetPokemon } from '../api/GetPokemon';
 import ColorSchemesExample from '../components/Navbar';
-import { InsertPokemon } from '../api/post';
-import { GetPokedex } from '../api/pokedex';
+import { CatchPokemon } from '../api/CatchPokemon';
+import { GetPokedex } from '../api/GetPokedex';
 import Form from '../components/Form';
 
 
@@ -12,7 +12,7 @@ export default function Home(){
     const [ pokedexs, setPokedex ] = useState([]);
     
     useEffect(() => {
-        const pokemonsFetched = getAll();
+        const pokemonsFetched = GetPokemon();
         pokemonsFetched
             .then(result => setPokemons(result))
             .catch(error=>console.error("Erreur avec notre API :",error.message));
@@ -37,34 +37,14 @@ export default function Home(){
             {
               pokemon.type.map((type,keyType) => <h3>{type.name}</h3>)
             }
+      
 
-
-
-            
-
-
-            <Form pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {InsertPokemon}/>
-            
-
-            
-            {/* {
-              pokedexs.map((pokedex,keydex) => <h3>{pokedex.key}</h3>)
-            } */}
-
-
-            {/* if pokemon.name in pokedex.name<h2 >Ce pokemon est déja dans le pokedex</h2> */}
-
-            
-            
-
-            
-
-            
-
-            
+      <Form pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {CatchPokemon}/>
           </div>
         })
+
       }
+      
     </div>;
 }
 

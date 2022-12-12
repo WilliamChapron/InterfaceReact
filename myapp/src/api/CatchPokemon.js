@@ -1,4 +1,4 @@
-export const InsertPokemon = async (data) => {
+export const CatchPokemon = async (data) => {
     fetch('http://localhost:4444/pokedex/insert', {
             method: 'POST', 
             headers: {'Content-Type':'application/json'},

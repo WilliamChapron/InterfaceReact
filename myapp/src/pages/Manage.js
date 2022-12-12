@@ -3,11 +3,12 @@ import ColorSchemesExample from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { UpdatePokemon } from '../api/UpdatePokemon';
 import FormComplex from '../components/FormComplex';
-import Form from '../components/Form';
+import SimpleForm from '../components/SimpleForm';
 import { GetPokemon } from '../api/GetPokemon';
 import { DeletePokemon } from '../api/DeletePokemon';
 import { CreatePokemon } from '../api/CreatePokemon';
 import { useForm } from "react-hook-form";
+
 
 export default function Manage(){
 
@@ -42,13 +43,18 @@ export default function Manage(){
                 }
                 <p>Update Pokemon</p>
                 <FormComplex refreshPage = {handleRefresh} functionName = {UpdatePokemon} valueSubmit = "Modifier" filter = {<select {...register("pokemonupdate")}> {pokemons.map((pokemonChoice,keyChoice) => <option  value={pokemonChoice._id}>{pokemonChoice.name}</option>)}</select>}/>
-                <p>Create Pokemon</p>
-                <FormComplex refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
                 <p>Delete Pokemon</p>
-                <Form refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "Supprimer" functionName = {DeletePokemon}/>
+                <SimpleForm refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "Supprimer" functionName = {DeletePokemon}/>
+
             </div>
             })
+
+        
     }
+
+    <p>Create Pokemon</p>
+    <FormComplex refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
+                
       
     </div>;
      

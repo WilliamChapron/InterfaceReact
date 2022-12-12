@@ -3,7 +3,7 @@ import { GetPokemon } from '../api/GetPokemon';
 import ColorSchemesExample from '../components/Navbar';
 import { CatchPokemon } from '../api/CatchPokemon';
 import { GetPokedex } from '../api/GetPokedex';
-import Form from '../components/Form';
+import SimpleForm from '../components/SimpleForm';
 
 
 export default function Home(){
@@ -39,7 +39,7 @@ export default function Home(){
             }
       
 
-      <Form pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {CatchPokemon}/>
+      <SimpleForm pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {CatchPokemon}/>
           </div>
         })
 

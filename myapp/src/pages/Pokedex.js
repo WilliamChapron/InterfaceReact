@@ -12,7 +12,6 @@ export default function Home(){
     const handleRefresh = () => setCount(count+1);
     
     useEffect(() => {
-      console.log("submitttt");
       const pokedexFetched = GetPokedex();
       pokedexFetched
         .then(resultp => setPokedex(resultp))
@@ -26,17 +25,22 @@ export default function Home(){
       <ColorSchemesExample />
       { 
         pokedexs.map((pokedex,key) =>{
-          return <div key={key} className="bloc-pokemon">
-            <h2>{pokedex.name}</h2>
-            <h2>{pokedex._id}</h2>
-            {
-                pokedex.type.map((type,keyType) => <h3>{type.name}</h3>)
-            }
+          return <div className="card-list">
+            
+            <div key={key} className="p-2 bloc-pokemon background">
+              <img className="avatar" src={"https://cdn.discordapp.com/attachments/1034093039481786428/1052181679298588692/pokemon.png"} />
+              
+              {
+                pokedex.type.map((type,keyType) => <img className="type" src={"https://cdn.discordapp.com/attachments/1034093039481786428/1052181679298588692/pokemon.png"}/>)
+              }        
+            </div>
 
-          <SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/>
+            <SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/>
 
           </div>
         })
       }
+      
+      
     </div>;
 }

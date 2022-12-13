@@ -1,7 +1,4 @@
 export const CreatePokemon = (data) => {
-    console.log(data.type1)
-    console.log(data.type2)
-    console.log(data.name)
 
     fetch('http://localhost:4444/pokemon/insert',{
         method: 'POST', 

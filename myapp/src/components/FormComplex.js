@@ -10,12 +10,10 @@ export default function FormComplex(props){
 
     
     const { register, handleSubmit } = useForm();
+
     const onSubmit = data => {
         props.functionName(data);
-        props.refreshPage();
     }
-
-    
 
     const [ types, setTypes ] = useState([]);
 

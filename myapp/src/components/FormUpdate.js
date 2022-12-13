@@ -23,10 +23,6 @@ export default function FormUpdate(props){
         handleRefresh();
     }
     
-    
-
-    
-
     useEffect(() => {
         const typesFetched = GetType();
         typesFetched
@@ -44,10 +40,10 @@ export default function FormUpdate(props){
         </select>
         <Form.Control size="lg" type="text" placeholder="Nom du pokemon" {...register("name", {required: true})} /> <br />
         <Form.Control size="lg" type="text" placeholder="Img du pokemon" {...register("img", {required: true})} /> <br />
-        <select {...register("type1")}>
+        <select {...register("type1",{required: true})}>
             {types.map((type,keyType) => <option  value={type._id}>{type.name}</option>)}
         </select>
-        <select {...register("type2")}>
+        <select {...register("type2",{required: true})}>
             {types.map((type,keyType) => <option value={type._id}>{type.name}</option>)}
         </select>
         <input type="submit" value={props.valueSubmit}/> 

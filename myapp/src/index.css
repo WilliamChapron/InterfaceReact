@@ -1,33 +1,44 @@
-.bloc-pokemon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 0;
-    margin: 2rem;
-    
-    border-radius: 1rem;
-    min-width: 400px;
+.cardWithform {
+    margin: 10em 0px 0px 0px;
+    width: 400px;
     height: 400px;
-    text-align: center;
-  
     background-image:url(https://www.pokebip.com/membres/galeries/1217/1217241528089622100.jpg);
     background-repeat: no-repeat;
-    background-position: center;
-    }
-  
-  .avatar{
-      width: 120px;
-      height: 120px;
-  }
-  
-.card-list{
-display: flex;
-flex-direction:row;
-margin-left: 5%;
-margin-right: 85%;
+}
+
+.avatar{
+    position:relative;
+    top:40px;
+    left:20%;
+    width: 200px;
+    height: 200px;
 }
   
-.Main{
-max-width: 100%;
+.type{
+    position:relative;
+    top: 10em;
+    right:25%;
+    width: 120px;
+    height: 120px;
+}
+
+.card-list{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    justify-content:center;
+}
+  
+.background{
+    z-index:-1;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-image:url(https://cherry.img.pmdstatic.net/fit/https.3A.2F.2Fimg.2Egaming.2Egentside.2Ecom.2Farticle.2Fgallery.2Ffond-d-ecran-pokken-tournament_c6b6f439ad499f8bf09c223b5ff125c14a17f8ba.2Ejpg/640x360/quality/80/fond-d-ecran-pokken-tournament.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: blur(2px);
 }

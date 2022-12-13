@@ -3,7 +3,7 @@ import ColorSchemesExample from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { UpdatePokemon } from '../api/UpdatePokemon';
 import FormComplex from '../components/FormComplex';
-import SimpleForm from '../components/SimpleForm';
+import FormUpdate from '../components/FormUpdate';
 import { GetPokemon } from '../api/GetPokemon';
 import { DeletePokemon } from '../api/DeletePokemon';
 import { CreatePokemon } from '../api/CreatePokemon';
@@ -19,6 +19,11 @@ export default function Manage(){
 
     const [ count, setCount ] = useState(0);
     const handleRefresh = () => setCount(count+1);
+
+    const onSubmit = data => {
+        DeletePokemon(data);
+        handleRefresh();
+    }
     
     useEffect(() => {
         const pokemonsFetched = GetPokemon();
@@ -28,32 +33,21 @@ export default function Manage(){
     },[count]);
     
     return <div className="Main">
-      <ColorSchemesExample />
-      
-    { 
-        pokemons.map((pokemon,key) =>{
-            
-            return <div key={key} className="bloc-pokemon">
-                <p>See Pokemon</p>
-                <img className="avatar" src={pokemon.img} />
-                <h2>{pokemon.name}</h2>
-                <h2>{pokemon._id}</h2>
-                {
-                    pokemon.type.map((type,keyType) => <h3>{type.name}</h3>)
-                }
-                <p>Update Pokemon</p>
-                <FormComplex refreshPage = {handleRefresh} functionName = {UpdatePokemon} valueSubmit = "Modifier" filter = {<select {...register("pokemonupdate")}> {pokemons.map((pokemonChoice,keyChoice) => <option  value={pokemonChoice._id}>{pokemonChoice.name}</option>)}</select>}/>
-                <p>Delete Pokemon</p>
-                <SimpleForm refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "Supprimer" functionName = {DeletePokemon}/>
-
-            </div>
-            })
-
+        <ColorSchemesExample /><br></br><br></br>
         
-    }
+        <p>Update Pokemon</p>
+        <FormUpdate refreshPage = {handleRefresh} functionName = {UpdatePokemon} valueSubmit = "Modifier"/><br></br><br></br>
 
-    <p>Create Pokemon</p>
-    <FormComplex refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
+        <p>Delete Pokemon</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <select {...register("id")}>
+                {pokemons.map((pokemon,keyPokemon) => <option  value={pokemon._id}>{pokemon.name}</option>)}
+            </select>
+            <input type="submit" value="Supprimer"/> 
+        </form><br></br><br></br>
+
+        <p>Create Pokemon</p>
+        <FormComplex refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
                 
       
     </div>;

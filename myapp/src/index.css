@@ -1,0 +1,33 @@
+.bloc-pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    margin: 2rem;
+    
+    border-radius: 1rem;
+    min-width: 400px;
+    height: 400px;
+    text-align: center;
+  
+    background-image:url(https://www.pokebip.com/membres/galeries/1217/1217241528089622100.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+  
+  .avatar{
+      width: 120px;
+      height: 120px;
+  }
+  
+.card-list{
+display: flex;
+flex-direction:row;
+margin-left: 5%;
+margin-right: 85%;
+}
+  
+.Main{
+max-width: 100%;
+}

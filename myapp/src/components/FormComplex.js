@@ -1,6 +1,4 @@
 import { useForm } from "react-hook-form";
-import { GetType } from "../api/GetType";
-import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 
 
@@ -13,28 +11,26 @@ export default function FormComplex(props){
 
     const onSubmit = data => {
         props.functionName(data);
+        props.refreshPage();
     }
 
-    const [ types, setTypes ] = useState([]);
 
-    useEffect(() => {
-        const typesFetched = GetType();
-        typesFetched
-            .then(result => setTypes(result))
-            .catch(error=>console.error("Erreur avec notre API :",error.message));
-    },[]);
 
-    return <form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Control size="lg" type="text" placeholder="Nom du pokemon" {...register("name", {required: true})} /> <br />
-        <Form.Control size="lg" type="text" placeholder="Img du pokemon" {...register("img", {required: true})} /> <br />
-        <select {...register("type1")}>
-            {types.map((type,keyType) => <option  value={type._id}>{type.name}</option>)}
-        </select>
-        <select {...register("type2")}>
-            {types.map((type,keyType) => <option value={type._id}>{type.name}</option>)}
-        </select>
-        <input type="submit" value={props.valueSubmit}/> 
-    </form>
+    return <form className="formSize" onSubmit={handleSubmit(onSubmit)}>
+        <p>Create Pokemon</p> <br></br>
+        <Form.Control size="lg" type="text" placeholder="Nom du pokemon" {...register("name", {required: true})} /> <br></br>
+        <Form.Control size="lg" type="text" placeholder="Img du pokemon" {...register("img", {required: true})} /> <br></br>
+        <select className="form-select form-select-sm" aria-label=".form-select-sm type" {...register("type1")}>
+            {props.types.map((type,keyType) => <option  value={type._id}>{type.name}</option>)}
+        </select> <br></br>
+        <Form.Control size="lg" type="text" placeholder="Description du type1" {...register("desctype1")} /> <br />
+        <select className="form-select form-select-sm" aria-label=".form-select-sm type" {...register("type2")}>
+            {props.types.map((type,keyType) => <option value={type._id}>{type.name}</option>)}
+        </select> <br></br>
+        <Form.Control size="lg" type="text" placeholder="Description du type2" {...register("desctype2")} /> <br />
+        <input type="submit" className="btn btn-outline-success buttonin" value={props.valueSubmit}/> <br></br> <br></br> <br></br>
+    </form> 
+    
 
 
 

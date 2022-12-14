@@ -1,49 +1,47 @@
+import '../index.css';
+
+
+
 
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Manage from '../pages/Manage';
-
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route
-} from "react-router-dom";
-
-
-
-
 
     
 
 export default function ColorSchemesExample() {
-  const styles = {
-    a: {
-      margin: "0px 0px 0px -250px"
-    },
-    b: {
-      margin: "0px 0px 0px 30px"
-    },
-    c: {
-      margin: "0px 0px 0px 30px"
-    },
-    d: {
-      fontSize: "35px",
-      color: "red",
-    }
-  }
-  return (
-    <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="http://localhost:3000/" style={{...styles.a,...styles.d}}>Accueil</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="http://localhost:3000/m" style={{...styles.b,...styles.d}}>Gestion</Nav.Link>
-            <Nav.Link href="http://localhost:3000/p" style={{...styles.c,...styles.d}}>Pokedex</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-    </>
-  );
-}
+  return <Navbar className = "opacity" bg="dark">
+    <Container>
+      <Navbar.Brand href="http://localhost:3000/p">
+        <img
+          src="https://risibank.fr/cache/medias/0/17/1737/173777/full.png"
+          width="165"
+          height="125"
+          className="d-inline-block align-top nav-margin-one"
+        />
+      </Navbar.Brand>
+      <Navbar.Brand href="http://localhost:3000/">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
+          width="200"
+          height="75"
+          className="d-inline-block align-top nav-margin-two"
+        />
+      </Navbar.Brand>
+      <Navbar.Brand href="http://localhost:3000/m">
+        <img
+          src="http://firenews.ionicbucket.com/img/adminpanel-icon.png"
+          width="200"
+          height="75"
+          className="d-inline-block align-top nav-margin-three"
+        />
+      </Navbar.Brand>
+    </Container>
+  </Navbar>
+
+};
+  
+
+
+
+
+

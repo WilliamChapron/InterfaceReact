@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GetPokedex } from '../api/GetPokedex';
 import ColorSchemesExample from '../components/Navbar';
-import SimpleForm from '../components/SimpleForm';
-import { RemovePokedex } from "../api/RemovePokedex";
+import Card from '../components/Card'
 
 export default function Home(){
     
@@ -10,6 +9,12 @@ export default function Home(){
 
     const [ count, setCount ] = useState(0);
     const handleRefresh = () => setCount(count+1);
+
+    const [isShown, setIsShown] = useState(false);
+    
+    function showCard(event) {
+      setIsShown(current => !current);
+    }
     
     useEffect(() => {
       const pokedexFetched = GetPokedex();
@@ -23,23 +28,26 @@ export default function Home(){
      
     return <div className="Main">
       <ColorSchemesExample />
+      <div className="card-list">
       { 
         pokedexs.map((pokedex,key) =>{
-          return <div className="card-list">
-            
-            <div key={key} className="p-2 bloc-pokemon background">
-              <img className="avatar" src={"https://cdn.discordapp.com/attachments/1034093039481786428/1052181679298588692/pokemon.png"} />
-              
-              {
-                pokedex.type.map((type,keyType) => <img className="type" src={"https://cdn.discordapp.com/attachments/1034093039481786428/1052181679298588692/pokemon.png"}/>)
-              }        
-            </div>
+          // if id in list of setIsShown is in pokemon id because i send pokemon id and i set it in table to verify if clicked
+          return <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'} onClick={(event)=>showCard(event)}>
 
-            <SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/>
+
+            {isShown && <Card pokemonTable = {pokedex} key = {key}/>}
+
+            
+            
 
           </div>
+
+          //<SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/>
+          
+
         })
       }
+      </div>
       
       
     </div>;

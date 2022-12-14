@@ -1,51 +1,13 @@
-
-
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P");
-
-
-*{
-    font-family:"Press Start 2P"
-}
-
-.header{
-    display:inline;
-    width:100px;
-    height:100px;
-}
-
-.opacity{
-    height:150px;
-    width:102%;
-    margin-left:-1em;
-    -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 50px 5px 14px 5px rgba(173,173,173,0); 
-    box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 50px 5px 14px 5px rgba(173,173,173,0);
-}
-
-
-.nav-margin-one{
-    margin: 0.5em 0em 0em -13em;
-}
-
-.nav-margin-two{
-    margin: -0.4em 0em 0em 25em;
-}
-
-.nav-margin-three{
-    margin: 0em 0em 0em 29em;
-}
-
 .cardWithform-Off {
     background-image:url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4f7705ec-8c49-4eed-a56e-c21f3985254c/dah43cy-a8e121cb-934a-40f6-97c7-fa2d77130dd5.png/v1/fill/w_1024,h_1420,strp/pokemon_card_backside_in_high_resolution_by_atomicmonkeytcg_dah43cy-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTQyMCIsInBhdGgiOiJcL2ZcLzRmNzcwNWVjLThjNDktNGVlZC1hNTZlLWMyMWYzOTg1MjU0Y1wvZGFoNDNjeS1hOGUxMjFjYi05MzRhLTQwZjYtOTdjNy1mYTJkNzcxMzBkZDUucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.9GzaYS7sd8RPY5FlHca09J9ZQZ9D9zI69Ru-BsbkLDA);
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size:cover;
     margin: 10em 0px 0px 0px;
     width: 400px;
     height: 600px;
 }
 
 .cardWithform-On{
-    display:flex;
-    flex-direction:column;
     background-image:url(https://www.pokebip.com/membres/galeries/1217/1217241528089622100.jpg);
     background-repeat: no-repeat;
     margin: 10em 0px 0px 0px;
@@ -64,21 +26,11 @@
   
 .type{
     position:relative;
-    top: 3em;
-    left:15%;
-    margin:30px 0px 0px 0px;
-    width: 60px;
-    height: 60px;
+    top: 10em;
+    right:25%;
+    width: 120px;
+    height: 120px;
 }
-
-.Main {
-    background-image:url("https://cherry.img.pmdstatic.net/fit/https.3A.2F.2Fimg.2Egaming.2Egentside.2Ecom.2Farticle.2Fgallery.2Ffond-d-ecran-pokken-tournament_c6b6f439ad499f8bf09c223b5ff125c14a17f8ba.2Ejpg/640x360/quality/80/fond-d-ecran-pokken-tournament.jpg");
-    background-color: rgba(0, 0, 255, 0.5);
-}
-
-
-
-
 
 .card-list{
     display: flex;
@@ -86,14 +38,17 @@
     flex-wrap: wrap;
     align-items:flex-start;
     justify-content:center;
-    column-gap: 10em;
 }
   
-
-
-
-.formSize{
-    margin:10em 0em 0em 25em;
-    width:50%;
-    text-align:center;
+.background{
+    z-index:-1;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-image:url(https://cherry.img.pmdstatic.net/fit/https.3A.2F.2Fimg.2Egaming.2Egentside.2Ecom.2Farticle.2Fgallery.2Ffond-d-ecran-pokken-tournament_c6b6f439ad499f8bf09c223b5ff125c14a17f8ba.2Ejpg/640x360/quality/80/fond-d-ecran-pokken-tournament.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: blur(2px);
 }

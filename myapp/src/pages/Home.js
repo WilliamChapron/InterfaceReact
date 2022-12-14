@@ -15,7 +15,7 @@ export default function Home(){
 
     const [isShown, setIsShown] = useState(false);
     
-    function showCard(event,pokemon,key) {
+    function showCard(event) {
       setIsShown(current => !current);
     }
     
@@ -29,20 +29,26 @@ export default function Home(){
     return <div className="Main">
       <ColorSchemesExample />
       <div className="card-list">
+        <button onClick={(event)=>showCard(event)}>Afficher les cartes</button>
       { 
         pokemons.map((pokemon,key) =>{
-          return <div className="cardWithform" onClick={(event)=>showCard(event,pokemon,key)}>
+          // if id in list of setIsShown is in pokemon id because i send pokemon id and i set it in table to verify if clicked
+          
+          return <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'}>
 
 
             {isShown && <Card pokemonTable = {pokemon} key = {key}/>}
 
-
-            <SimpleForm refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "" functionName = {CatchPokemon}/>
+            
+            
 
           </div>
+
+          //<SimpleForm refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {CatchPokemon}/>
+          
+
         })
       }
-      <div className="background"></div>
       </div>
       
       

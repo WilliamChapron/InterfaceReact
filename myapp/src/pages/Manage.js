@@ -1,4 +1,3 @@
-
 import ColorSchemesExample from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { UpdatePokemon } from '../api/UpdatePokemon';
@@ -8,6 +7,8 @@ import { GetPokemon } from '../api/GetPokemon';
 import { DeletePokemon } from '../api/DeletePokemon';
 import { CreatePokemon } from '../api/CreatePokemon';
 import { useForm } from "react-hook-form";
+import { GetType } from "../api/GetType";
+import DeleteForm from '../components/DeleteForm';
 
 
 export default function Manage(){
@@ -15,14 +16,17 @@ export default function Manage(){
 
 
     const [ pokemons, setPokemons ] = useState([]);
+    const [ types, setTypes ] = useState([]);
+
     const { register, handleSubmit } = useForm();
+
+
 
     const [ count, setCount ] = useState(0);
     const handleRefresh = () => setCount(count+1);
 
     const onSubmit = data => {
         DeletePokemon(data);
-        handleRefresh();
     }
     
     useEffect(() => {
@@ -30,24 +34,18 @@ export default function Manage(){
         pokemonsFetched
             .then(result => setPokemons(result))
             .catch(error=>console.error("Erreur avec notre API :",error.message));
+
+        const typesFetched = GetType();
+        typesFetched
+            .then(result => setTypes(result))
+            .catch(error=>console.error("Erreur avec notre API :",error.message));
     },[count]);
     
     return <div className="Main">
         <ColorSchemesExample /><br></br><br></br>
-        
-        <p>Update Pokemon</p>
-        <FormUpdate refreshPage = {handleRefresh} functionName = {UpdatePokemon} valueSubmit = "Modifier"/><br></br><br></br>
-
-        <p>Delete Pokemon</p>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <select {...register("id")}>
-                {pokemons.map((pokemon,keyPokemon) => <option  value={pokemon._id}>{pokemon.name}</option>)}
-            </select>
-            <input type="submit" value="Supprimer"/> 
-        </form><br></br><br></br>
-
-        <p>Create Pokemon</p>
-        <FormComplex refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
+        <FormUpdate pokemons = {pokemons} types={types} refreshPage = {handleRefresh} functionName = {UpdatePokemon} valueSubmit = "Modifier"/><br></br><br></br>
+        <DeleteForm pokemons = {pokemons} types={types} refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Delete"/>
+        <FormComplex pokemon = {pokemons} types={types} refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
                 
       
     </div>;

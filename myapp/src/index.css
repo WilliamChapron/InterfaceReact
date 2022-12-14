@@ -4,7 +4,8 @@
 
 
 *{
-    font-family:"Press Start 2P"
+    font-family:"Press Start 2P";
+    
 }
 
 .header{
@@ -14,11 +15,11 @@
 }
 
 .opacity{
+    margin:0px;
     height:150px;
-    width:102%;
-    margin-left:-1em;
-    -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 50px 5px 14px 5px rgba(173,173,173,0); 
-    box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 50px 5px 14px 5px rgba(173,173,173,0);
+    width:100%;
+    -webkit-box-shadow: inset -1px 3px 8px 8px #1F87FF, 2px 5px 16px 0px #0B325E, 50px 5px 14px 5px rgba(173,173,173,0); 
+    box-shadow: inset -1px 3px 8px 8px #1F87FF, 2px 5px 16px 0px #0B325E, 50px 5px 14px 5px rgba(173,173,173,0);
 }
 
 
@@ -72,13 +73,12 @@
 }
 
 .Main {
-    background-image:url("https://cherry.img.pmdstatic.net/fit/https.3A.2F.2Fimg.2Egaming.2Egentside.2Ecom.2Farticle.2Fgallery.2Ffond-d-ecran-pokken-tournament_c6b6f439ad499f8bf09c223b5ff125c14a17f8ba.2Ejpg/640x360/quality/80/fond-d-ecran-pokken-tournament.jpg");
+    background-image:url("https://wallpaperaccess.com/full/215986.jpg");
     background-color: rgba(0, 0, 255, 0.5);
+    background-size: contain;
+    background-color: #0000007a;
+    background-blend-mode: color;
 }
-
-
-
-
 
 .card-list{
     display: flex;
@@ -88,12 +88,21 @@
     justify-content:center;
     column-gap: 10em;
 }
-  
-
-
 
 .formSize{
     margin:10em 0em 0em 25em;
     width:50%;
     text-align:center;
+}
+
+.buttonPos {
+    position:relative;
+    top:4em;
+    left:40%;
+}
+
+.buttonManage {
+    position:relative;
+    top:-5em;
+    left:30%;
 }

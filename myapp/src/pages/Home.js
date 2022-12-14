@@ -28,29 +28,21 @@ export default function Home(){
     
     return <div className="Main">
       <ColorSchemesExample />
+      <button className="buttonPos"onClick={(event)=>showCard(event)}>Afficher les cartes</button>
       <div className="card-list">
-        <button onClick={(event)=>showCard(event)}>Afficher les cartes</button>
       { 
         pokemons.map((pokemon,key) =>{
-          // if id in list of setIsShown is in pokemon id because i send pokemon id and i set it in table to verify if clicked
-          
-          return <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'}>
-
-
+          return  <div>
+            <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'}>
             {isShown && <Card pokemonTable = {pokemon} key = {key}/>}
-
-            
-            
-
+            </div>
+            <SimpleForm refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {CatchPokemon}/>
           </div>
-
-          //<SimpleForm refreshPage = {handleRefresh} pokemonId = {pokemon._id} valueSubmit = "Attraper" functionName = {CatchPokemon}/>
           
-
+          
         })
       }
       </div>
-      
       
     </div>;
 }

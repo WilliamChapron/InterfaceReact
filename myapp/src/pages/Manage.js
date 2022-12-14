@@ -46,8 +46,6 @@ export default function Manage(){
         <FormUpdate pokemons = {pokemons} types={types} refreshPage = {handleRefresh} functionName = {UpdatePokemon} valueSubmit = "Modifier"/><br></br><br></br>
         <DeleteForm pokemons = {pokemons} types={types} refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Delete"/>
         <FormComplex pokemon = {pokemons} types={types} refreshPage = {handleRefresh} functionName = {CreatePokemon} valueSubmit = "Créer"/>
-                
-      
     </div>;
      
     

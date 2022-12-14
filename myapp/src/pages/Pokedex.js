@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { GetPokedex } from '../api/GetPokedex';
 import ColorSchemesExample from '../components/Navbar';
 import Card from '../components/Card'
+import SimpleForm from '../components/SimpleForm';
+import { RemovePokedex } from "../api/RemovePokedex";
 
 export default function Home(){
     
@@ -24,31 +26,51 @@ export default function Home(){
     },[count]);
 
    
-
-     
-    return <div className="Main">
-      <ColorSchemesExample />
-      <div className="card-list">
-      { 
-        pokedexs.map((pokedex,key) =>{
-          // if id in list of setIsShown is in pokemon id because i send pokemon id and i set it in table to verify if clicked
-          return <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'} onClick={(event)=>showCard(event)}>
-
-
-            {isShown && <Card pokemonTable = {pokedex} key = {key}/>}
-
-            
-            
-
-          </div>
-
-          //<SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/>
-          
-
-        })
+    function Draw(){
+      console.log(pokedexs)
+      if (pokedexs.length != 0){ 
+        return ( <>
+        <ColorSchemesExample />
+        <button className="buttonPos"onClick={(event)=>showCard(event)}>Afficher les cartes</button>
+        <div className="card-list">
+          { 
+            pokedexs.map((pokedex,key) =>{
+              return  <div>
+                <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'}>
+                {isShown && <Card pokemonTable = {pokedex} key = {key}/>}
+                </div>
+                <SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/> 
+              </div>
+            })
+          }
+          </div></>)
       }
-      </div>
-      
+      if (pokedexs.length < 5 && pokedexs.length > 0){ 
+        return ( <>
+        <ColorSchemesExample />
+        <button className="buttonPos"onClick={(event)=>showCard(event)}>Afficher les cartes</button>
+        <div className="card-list">
+          { 
+            pokedexs.map((pokedex,key) =>{
+              return  <div>
+                <div className={isShown ? 'cardWithform-On' : 'cardWithform-Off'}>
+                {isShown && <Card pokemonTable = {pokedex} key = {key}/>}
+                </div>
+                <SimpleForm pokemonId = {pokedex._id} valueSubmit = "Rejeter" functionName = {RemovePokedex} refreshPage = {handleRefresh}/> 
+              </div>
+            })
+          }
+          </div></>)
+      }
+      if (pokedexs.length == 0){ 
+        return <> <ColorSchemesExample />
+        <h1>Pas de Pokemon dans le pokedex</h1> </>
+      }
+    }
+    
+    return <div className="Main">
+      <>
+      <Draw /> </>
       
     </div>;
 }

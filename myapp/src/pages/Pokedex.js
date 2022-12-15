@@ -64,7 +64,7 @@ export default function Home(){
       }
       if (pokedexs.length == 0){ 
         return <> <ColorSchemesExample />
-        <h1>Pas de Pokemon dans le pokedex</h1> </>
+        <h1 className="white">Pas de Pokemon dans le pokedex</h1> </>
       }
     }
     

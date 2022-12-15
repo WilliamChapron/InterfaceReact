@@ -8,6 +8,10 @@
     
 }
 
+.white{
+    color:white;
+}
+
 .header{
     display:inline;
     width:100px;
@@ -65,11 +69,11 @@
   
 .type{
     position:relative;
-    top: 3em;
-    left:15%;
-    margin:30px 0px 0px 0px;
-    width: 60px;
-    height: 60px;
+    top: -3em;
+    left:2%;
+    margin:50px 0px 0px 10px;
+    width: 70px;
+    height: 30px;
 }
 
 .Main {
@@ -105,4 +109,22 @@
     position:relative;
     top:-5em;
     left:30%;
+}
+
+.title{
+    position:relative;
+    top:0.8em;
+    left:10%;
+}
+
+.three{
+    position:relative;
+    top:5em;
+    left:24%;
+}
+
+.four{
+    position:relative;
+    top:8em;
+    left:24%;
 }
